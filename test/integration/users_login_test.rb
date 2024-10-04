@@ -66,3 +66,12 @@ class Logout < ValidLogin
     assert_select "a[href=?]", user_path(@user), count: 0
    end
 end
+
+class LogoutTest < Logout
+  
+  test "should still work after logout in second window" do
+    delete logout_path
+    assert_redirected_to root_url
+  end
+
+end
