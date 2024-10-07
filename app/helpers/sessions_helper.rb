@@ -7,7 +7,6 @@ module SessionsHelper
      session[:session_token] = user.session_token
   end
 
-
   # Remembers a user in a persistent session
   def remember(user)
     user.remember
@@ -53,4 +52,10 @@ module SessionsHelper
   def current_user?(user)
     user && user == current_user
   end
+
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
+  
 end 
