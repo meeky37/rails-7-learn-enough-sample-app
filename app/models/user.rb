@@ -41,7 +41,6 @@ class User < ApplicationRecord
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
   end
-  end
 
  # Forgets a user
   def forget
