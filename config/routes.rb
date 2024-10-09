@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get 'sessions/new'
   root "static_pages#home" # removed the route for 'static_pages/home', as we’ll always use root_path or root_url instead.
   get  "/help",    to: "static_pages#help"
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   resources :users
   resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
 end
 
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
